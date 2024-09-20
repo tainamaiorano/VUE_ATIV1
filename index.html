@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <style>
+        p {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <template>
+            <div>
+                <!-- Exercício 1: Exibir uma Mensagem -->
+                <p>{{ mensagem }}</p>
+
+                <!-- Exercício 2: Contador de Cliques -->
+                <button @click="incrementar">Clique aqui!</button>
+                <p>Contador: {{ contador }}</p>
+
+                <!-- Exercício 3: Mostrar/Ocultar Texto -->
+                <button @click="mostrar = !mostrar">
+                    {{ mostrar ? 'Ocultar Texto' : 'Mostrar Texto' }}
+                </button>
+                <p v-if="mostrar">Hello wo</p>
+
+                <!-- Exercício 4: Lista de Itens com v-for -->
+                <ul>
+                    <li v-for="(item, index) in itens" :key="index">{{ item }}</li>
+                </ul>
+
+                <!-- Exercício 5: Entrada de Texto com v-model -->
+                <input v-model="nome" placeholder="Digite seu nome">
+                <p>Nome: {{ nome }}</p>
+            </div>
+        </template>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    mensagem: "Bem-vindo ao Vue.js!",
+                    contador: 0,
+                    mostrar: false,
+                    itens: ['Item 1', 'Item 2', 'Item 3', 'Item 4'],
+                    nome: ''
+                };
+            },
+            methods: {
+                incrementar() {
+                    this.contador += 1;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
